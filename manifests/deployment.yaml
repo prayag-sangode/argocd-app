@@ -24,3 +24,17 @@ spec:
       volumes:
       - name: html-volume
         emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache2-service
+  namespace: default
+spec:
+  selector:
+    app: apache2
+  ports:
+    - protocol: TCP
+      port: 80        # The port the service will expose
+      targetPort: 80  # The port the pods are
+
