@@ -37,4 +37,5 @@ spec:
     - protocol: TCP
       port: 80        # The port the service will expose
       targetPort: 80  # The port the pods are
+type: LoadBalancer      
 
