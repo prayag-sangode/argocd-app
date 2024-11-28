@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache2
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apache2
+  template:
+    metadata:
+      labels:
+        app: apache2
+    spec:
+      containers:
+      - name: apache2
+        image: httpd:latest # Official Apache2 image from Docker Hub
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/local/apache2/htdocs
+      volumes:
+      - name: html-volume
+        emptyDir: {}
